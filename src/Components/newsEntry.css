@@ -1,0 +1,17 @@
+.newsEntry {
+  margin: auto;
+  border: 1px solid #eee;
+  box-shadow: 0 2px 3px #ccc;
+  padding: 16px;
+  text-align: center;
+}
+.newsEntry img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 900px;
+  height: 600px;
+}
+.newsEntry p {
+  margin: 0;
+}

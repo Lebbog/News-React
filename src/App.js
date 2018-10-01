@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import "./App.css";
 import "bootstrap/dist/css/bootstrap.css";
 import $ from "jquery";
 import NewsEntry from "./Components/newsEntry";
@@ -17,10 +16,15 @@ class App extends Component {
         return <NewsEntry key={articles.indexOf(article)} article={article} />;
       });
     }
+    const buttonStyle = {
+      display: "block",
+      margin: "0 auto"
+    };
     return (
       <div>
         <button
           className="btn btn-primary"
+          style={buttonStyle}
           type="submit"
           onClick={this.getNews}
         >
