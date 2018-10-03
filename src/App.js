@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import $ from "jquery";
 import NewsEntry from "./Components/newsEntry";
+import "./App.css";
 class App extends Component {
   state = {
     news: [],
@@ -16,20 +17,32 @@ class App extends Component {
         return <NewsEntry key={articles.indexOf(article)} article={article} />;
       });
     }
-    const buttonStyle = {
-      display: "block",
-      margin: "0 auto"
-    };
+    // const buttonStyle = {
+    //   display: "block",
+    //   margin: "0 auto"
+    // };
     return (
       <div>
-        <button
-          className="btn btn-primary"
-          style={buttonStyle}
-          type="submit"
-          onClick={this.getNews}
-        >
-          Get News
-        </button>
+        <div id="userInput">
+          <form className="form-inline">
+            <div className="form-group mx-sm-3 mb-2">
+              <input
+                id="searchTerm"
+                type="text"
+                className="form-control"
+                placeholder="Search Term"
+              />
+              <button
+                type="button"
+                className="btn btn-primary"
+                // style={buttonStyle}
+                onClick={this.getNews}
+              >
+                Get News
+              </button>
+            </div>
+          </form>
+        </div>
         {successfulRequest && newsEntries}
       </div>
     );
@@ -43,6 +56,10 @@ class App extends Component {
       dataType: "json",
       cache: false,
       success: function(data) {
+        // console.log($("#searchTerm").val());
+        let term = $("#searchTerm").val();
+        if (term === "") console.log("Empty");
+        else console.log(term);
         this.setState({ news: data, successfulRequest: true });
       }.bind(this),
       error: function(xhr, status, err) {
